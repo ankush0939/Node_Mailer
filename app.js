@@ -4,6 +4,8 @@ const exphbs = require('express-handlebars');
 const nodemailer = require('nodemailer');
 const path = require('path');
 
+var port = process.env.PORT || 8080
+
 const app = express();
 
 //view engine setup
@@ -30,13 +32,13 @@ app.post('/send', (req,res) => {
     `<p> You have a new contact request</p>
     <h3>Contact details</h3>
     <u>
-      <li>Name: $(req.body.name)</li>
-      <li>Company: $(req.body.company)</li>
-      <li>Email: $(req.body.email)</li>
-      <li>Phone: $(req.body.phone)</li>
+      <li>Name: ${req.body.name}</li>
+      <li>Company: ${req.body.company}</li>
+      <li>Email: ${req.body.email}</li>
+      <li>Phone: ${req.body.phone}</li>
     </u>  
     <h3>Message</h3>
-    <li> $(req.body.message)</li>`
+    <li> ${req.body.message}</li>`
     
     console.log(req.body);
 
@@ -45,8 +47,8 @@ app.post('/send', (req,res) => {
         //port: 587,
         //secure: false, // true for 465, false for other ports
         auth: {
-          user: '', //Set your sender email address
-          pass: '', //Give your password for authentication
+          user: 'test.ankush.node@gmail.com', //Set your sender email address
+          pass: 'testnode', //Give your password for authentication
         },
         /*tls: {
             rejectUnauthorized: false
@@ -81,7 +83,7 @@ app.post('/send', (req,res) => {
       res.render('contact', {msg: 'mail has been sent'});
 });
 
-app.listen(3000, () => {
-    console.log('server started');
-    console.log('Server running at: localhost:3000');
+app.listen(port, () => {
+    console.log('Server started....');
+    console.log('Server running at: localhost: '+ port);
 });
