@@ -47,8 +47,8 @@ app.post('/send', (req,res) => {
         //port: 587,
         //secure: false, // true for 465, false for other ports
         auth: {
-          user: 'test.ankush.node@gmail.com', //Set your sender email address
-          pass: 'testnode', //Give your password for authentication
+          user: '', //Set your sender email address
+          pass: '', //Give your password for authentication
         },
         /*tls: {
             rejectUnauthorized: false
